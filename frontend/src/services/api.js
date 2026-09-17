@@ -1,4 +1,4 @@
-const BASE = 'http://localhost:3001';
+const BASE = 'https://style-store-production.up.railway.app';
 
 function headers(body = false) {
   const h = {};
