@@ -10,8 +10,18 @@ const pool = new Pool({
 });
 
 pool.connect((err, client, release) => {
-  if (err) console.error('Erro ao conectar ao banco:', err.message);
-  else { console.log('Conectado ao PostgreSQL!'); release(); }
+  if (err) {
+    console.error('ERRO BANCO:', {
+      message: err.message,
+      code: err.code,
+      host: process.env.DB_HOST,
+      port: process.env.DB_PORT,
+      database: process.env.DB_NAME
+    });
+  } else {
+    console.log('Conectado ao PostgreSQL!');
+    release();
+  }
 });
 
 module.exports = pool;
